@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitCoin Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>BitCoin Price Prediction</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="messages">
+              {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('index') }}" method="POST">
+            <label for="open_price">Open Price:</label>
+            <input type="number" step="0.01" id="open_price" name="open_price" required>
+
+            <label for="high_price">High Price:</label>
+            <input type="number" step="0.01" id="high_price" name="high_price" required>
+
+            <label for="low_price">Low Price:</label>
+            <input type="number" step="0.01" id="low_price" name="low_price" required>
+
+            <label for="volume">Volume:</label>
+            <input type="number" id="volume" name="volume" required>
+
+            <label for="daily_return">Daily Return (%):</label>
+            <input type="number" step="0.01" id="daily_return" name="daily_return" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if input_graph %}
+            <div id="results">
+                <h3>Input Feature Graph</h3>
+                <img src="{{ input_graph }}" alt="Input Feature Graph" class="graph">
+
+                <!-- Option to toggle the visibility of the Input Feature Graph -->
+                <button onclick="toggleInputGraph()" id="toggleInputButton">Hide Input Feature Graph</button>
+
+                <!-- Probability graph, hidden by default -->
+                <div id="probabilityGraph" style="display: none;">
+                    <h3>Prediction Probability Graph</h3>
+                    <img src="{{ output_graph }}" alt="Prediction Probability Graph" class="graph">
+                </div>
+
+                <!-- Option to toggle the visibility of the probability graph -->
+                <button onclick="toggleProbabilityGraph()" id="toggleButton">Show Probability Graph</button>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        // Function to toggle the visibility of the Input Feature Graph
+        function toggleInputGraph() {
+            const inputGraph = document.getElementById("results").querySelector("img");
+            const toggleInputButton = document.getElementById("toggleInputButton");
+            
+            if (inputGraph.style.display === "none") {
+                inputGraph.style.display = "block";
+                toggleInputButton.innerText = "Hide Input Feature Graph";
+            } else {
+                inputGraph.style.display = "none";
+                toggleInputButton.innerText = "Show Input Feature Graph";
+            }
+        }
+
+        // Function to toggle the visibility of the probability graph
+        function toggleProbabilityGraph() {
+            const probabilityGraph = document.getElementById("probabilityGraph");
+            const toggleButton = document.getElementById("toggleButton");
+            
+            if (probabilityGraph.style.display === "none") {
+                probabilityGraph.style.display = "block";
+                toggleButton.innerText = "Hide Probability Graph";
+            } else {
+                probabilityGraph.style.display = "none";
+                toggleButton.innerText = "Show Probability Graph";
+            }
+        }
+    </script>
+</body>
+</html>

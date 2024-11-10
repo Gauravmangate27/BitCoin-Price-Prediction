@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #1a1919;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input[type="number"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.messages {
+    margin-bottom: 15px;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.graph {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Floating heading style */
+.floating-heading {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    color: #f1f1f1; /* Light text color for contrast */
+    padding: 15px 30px; /* Added more padding for a better look */
+    font-size: 30px; /* Larger font for emphasis */
+    font-family: 'Arial', sans-serif; /* Modern, clean font */
+    font-weight: bold; /* Bold for emphasis */
+    border-radius: 10px; /* Rounded corners for a soft look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    z-index: 1000;
+    width: auto;
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Smooth animation */
+}
+
+/* Hover effect for the floating heading */
+.floating-heading:hover {
+    transform: translateX(-50%) scale(1.05); /* Slight zoom effect on hover */
+    background-color: rgba(0, 0, 0, 1); /* Darker background on hover */
+}
+
+/* Make space for the floating heading */
+body {
+    padding-top: 80px; /* Adjusted space to accommodate the larger header */
+}
